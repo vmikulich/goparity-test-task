@@ -35,6 +35,7 @@
 <script setup>
 import { computed, onBeforeMount } from 'vue'
 
+import { useToast } from '@/composables/useToast'
 import { usePokemon } from '@/composables/usePokemon'
 
 import HeaderSection from './UI/HeaderSection.vue'
@@ -43,6 +44,7 @@ import SpinerLoader from '@/components/UI/SpinerLoader.vue'
 import statsIcons from '@/assets/icons/stats-sprite.svg'
 
 const { fetchRandomPokemon, pokemon } = usePokemon()
+const { errorToast } = useToast()
 
 const pokemonDataToDisplay = computed(() => {
   const { name, sprites, stats } = pokemon.value
@@ -65,7 +67,7 @@ onBeforeMount(async () => {
   try {
     await fetchRandomPokemon()
   } catch (error) {
-    alert(error)
+    errorToast('Opps... Something went wrong')
   }
 })
 </script>

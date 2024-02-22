@@ -7,20 +7,23 @@
 </template>
 
 <script setup>
-import { usePokemon } from '@/composables/usePokemon'
 import { ref } from 'vue'
+
+import { usePokemon } from '@/composables/usePokemon'
+import { useToast } from '@/composables/useToast'
 
 import SpinerLoader from './SpinerLoader.vue'
 
 const loading = ref(false)
 const { fetchRandomPokemon } = usePokemon()
+const { errorToast } = useToast()
 
 const fetchPokemon = async () => {
   try {
     loading.value = true
     await fetchRandomPokemon()
   } catch (error) {
-    alert(error)
+    errorToast('Opps... Something went wrong')
   } finally {
     loading.value = false
   }
