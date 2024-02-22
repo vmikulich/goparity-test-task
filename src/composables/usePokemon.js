@@ -9,6 +9,7 @@ export function usePokemon() {
   const pokemon = computed(() => state.pokemone)
 
   const fetchRandomPokemon = async () => {
+    state.pokemone = null
     const pokemonId = Math.floor(Math.random() * 898) + 1
     const pokemon = await fetchPokemonById(pokemonId)
     state.pokemone = pokemon

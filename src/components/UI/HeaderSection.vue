@@ -13,13 +13,12 @@ import { ref } from 'vue'
 import SpinerLoader from './SpinerLoader.vue'
 
 const loading = ref(false)
-const { fetchRandomPokemon, pokemon } = usePokemon()
+const { fetchRandomPokemon } = usePokemon()
 
 const fetchPokemon = async () => {
   try {
     loading.value = true
     await fetchRandomPokemon()
-    console.log(pokemon.value)
   } catch (error) {
     alert(error)
   } finally {
@@ -41,14 +40,16 @@ header {
   }
   button {
     cursor: pointer;
-    border: 2px solid rgb(4, 206, 4);
+    border: 2px solid rgb(53, 254, 187);
+    box-shadow: 0 0 5px -1px rgb(1, 43, 29);
     border-radius: 6px;
     padding: 5px 8px;
     font-size: 15px;
-    background-color: rgb(173, 243, 173);
+    background-color: rgb(53, 254, 187);
     transition: all 0.3s;
     &:hover {
-      background-color: azure;
+      background-color: rgb(50, 245, 180);
+      border: 2px solid rgb(50, 245, 180);
     }
   }
 }

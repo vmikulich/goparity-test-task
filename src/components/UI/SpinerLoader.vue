@@ -14,26 +14,26 @@
   position: relative;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
-}
-.loader::after,
-.loader::before {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #ff3d00;
-  width: 6px;
-  height: 6px;
-  transform: translate(150%, 150%);
-  border-radius: 50%;
-}
-.loader::before {
-  left: auto;
-  top: auto;
-  right: 0;
-  bottom: 0;
-  transform: translate(-150%, -150%);
+  &::after,
+  &::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #ff3d00;
+    width: 6px;
+    height: 6px;
+    transform: translate(150%, 150%);
+    border-radius: 50%;
+  }
+  &::before {
+    left: auto;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    transform: translate(-150%, -150%);
+  }
 }
 
 @keyframes rotation {
