@@ -1,5 +1,7 @@
 export default (pokemon) => {
-  const { name, sprites, stats } = pokemon.value
+  if (!pokemon) return null
+
+  const { name, sprites, stats } = pokemon
   const data = {
     name,
     image: sprites.front_default,

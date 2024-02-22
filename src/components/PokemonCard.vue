@@ -1,21 +1,21 @@
 <template>
   <div class="card">
-    <h2>{{ pokemonCardData.name }}</h2>
+    <h2>{{ pokemon?.name }}</h2>
     <div class="card-content">
       <div>
-        <img :src="pokemonCardData.image" alt="Pokemon image" />
+        <img :src="pokemon?.image" alt="Pokemon image" />
       </div>
       <div>
         <div
           class="stat-container"
-          v-for="(stat, index) in pokemonCardData.stats"
+          v-for="(stat, index) in pokemon?.stats"
           :key="index"
         >
           <SvgWrapper :name="stat.name" class="svg-size" />
-          <p class="stat-text">
-            <span>
+          <p>
+            <b>
               {{ stat.name }}
-            </span>
+            </b>
             : {{ stat.value }}
           </p>
         </div>
@@ -25,11 +25,13 @@
 </template>
 
 <script setup>
-import { usePokemon } from '@/composables/usePokemon'
+import { defineProps } from 'vue'
 
 import SvgWrapper from './UI/SvgWrapper.vue'
 
-const { pokemonCardData } = usePokemon()
+defineProps({
+  pokemon: Object,
+})
 </script>
 
 <style lang="scss" scoped>
@@ -60,11 +62,6 @@ const { pokemonCardData } = usePokemon()
         width: 24px;
         height: 24px;
         margin-right: 6px;
-      }
-      .stat-text {
-        span {
-          font-weight: 600;
-        }
       }
     }
   }

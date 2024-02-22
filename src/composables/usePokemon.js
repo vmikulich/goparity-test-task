@@ -11,7 +11,9 @@ const state = reactive({
 
 export function usePokemon() {
   const pokemon = computed(() => state.pokemon)
-  const pokemonCardData = computed(() => pokemonCardDataFormatter(pokemon))
+  const pokemonCardData = computed(() =>
+    pokemonCardDataFormatter(pokemon.value)
+  )
 
   const fetchRandomPokemon = async () => {
     state.pokemon = null

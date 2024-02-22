@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-const Get = ({ url, params }) => {
+axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
+
+const get = ({ url, params }) => {
   return axios.get(url, { params })
 }
 
 export default {
-  Get,
+  get,
 }

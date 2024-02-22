@@ -1,6 +1,6 @@
 <template>
   <div class="card-container">
-    <PokemonCard v-if="pokemon" />
+    <PokemonCard v-if="pokemonCardData" :pokemon="pokemonCardData" />
     <div v-else class="loader-wrapper">
       <SpinerLoader />
     </div>
@@ -16,7 +16,7 @@ import { usePokemon } from '@/composables/usePokemon'
 import PokemonCard from '@/components/PokemonCard.vue'
 import SpinerLoader from '@/components/UI/SpinerLoader.vue'
 
-const { fetchRandomPokemon, pokemon } = usePokemon()
+const { fetchRandomPokemon, pokemonCardData } = usePokemon()
 const { errorToast } = useToast()
 
 onBeforeMount(async () => {
