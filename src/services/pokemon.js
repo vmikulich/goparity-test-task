@@ -1,9 +1,9 @@
-import axios from 'axios'
+import api from '@/api'
 
 export const fetchPokemonById = (id) => {
-  const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-  return axios
-    .get(url)
+  const url = `/pokemon/${id}`
+  return api
+    .Get({ url })
     .then((res) => Promise.resolve(res.data))
     .catch((e) => Promise.reject(e))
 }

@@ -23,7 +23,7 @@ const fetchPokemon = async () => {
     loading.value = true
     await fetchRandomPokemon()
   } catch (error) {
-    errorToast('Opps... Something went wrong')
+    errorToast(error.message)
   } finally {
     loading.value = false
   }

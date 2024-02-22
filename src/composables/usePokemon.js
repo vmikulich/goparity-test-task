@@ -1,19 +1,27 @@
 import { computed, reactive } from 'vue'
+
 import { fetchPokemonById } from '@/services/pokemon'
 
+import { generateId } from '@/utils/pokemonIdGenerator'
+import pokemonCardDataFormatter from '@/formatters/pokemonCardDataFormatter'
+
 const state = reactive({
-  pokemone: null,
+  pokemon: null,
 })
 
 export function usePokemon() {
-  const pokemon = computed(() => state.pokemone)
+  const pokemon = computed(() => state.pokemon)
+  const pokemonCardData = computed(() => pokemonCardDataFormatter(pokemon))
 
   const fetchRandomPokemon = async () => {
-    state.pokemone = null
-    const pokemonId = Math.floor(Math.random() * 898) + 1
-    const pokemon = await fetchPokemonById(pokemonId)
-    state.pokemone = pokemon
+    state.pokemon = null
+    try {
+      const pokemonId = generateId()
+      state.pokemon = await fetchPokemonById(pokemonId)
+    } catch (error) {
+      throw new Error('Opps... Something went wrong')
+    }
   }
 
-  return { pokemon, fetchRandomPokemon }
+  return { pokemon, fetchRandomPokemon, pokemonCardData }
 }

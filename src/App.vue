@@ -1,16 +1,10 @@
 <template>
-  <PokemonDetails />
+  <HeaderSection />
+  <router-view />
 </template>
 
-<script>
-import PokemonDetails from './components/PokemonDetails.vue'
-
-export default {
-  name: 'App',
-  components: {
-    PokemonDetails,
-  },
-}
+<script setup>
+import HeaderSection from '@/components/UI/HeaderSection.vue'
 </script>
 
 <style lang="scss">

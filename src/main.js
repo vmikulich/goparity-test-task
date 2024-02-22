@@ -1,4 +1,12 @@
-import { createApp } from "vue";
-import App from "./App.vue";
+import { createApp } from 'vue'
+import router from './router'
+import App from './App.vue'
+import axios from 'axios'
 
-createApp(App).mount("#app");
+axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
+
+const app = createApp(App)
+
+app.use(router)
+
+app.mount('#app')
